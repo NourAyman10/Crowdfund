@@ -1,14 +1,26 @@
-<header>
-    <div class="logo">
-        <div class="icon">
-            <img src="assets/images/icon.svg" alt="">
-        </div>
-        <p>Crowdfund</p>
+<header class="header">
+  <div class="header__logo">
+    <div class="header__logo-icon">
+      <img src="assets/images/icon.svg" alt="logo">
     </div>
-    <div class="header">
-        <nav></nav>
-        <div class="buttons">
+    <p class="header__logo-text">Crowdfund</p>
+  </div>
 
-        </div>
+  <div class="header__nav">
+    <ul>
+      <li class="header__nav-item" 
+          routerLinkActive="header__nav-item--active">
+        <a [routerLink]="['/campaigns']">Campaigns</a>
+      </li>
+
+      <li class="header__nav-item">
+        <a [routerLink]="['/about']">About</a>
+      </li>
+    </ul>
+
+    <div class="header__buttons">
+      <button>Log in</button>
+      <button>Sign up</button>
     </div>
+  </div>
 </header>
