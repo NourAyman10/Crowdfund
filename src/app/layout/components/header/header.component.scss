@@ -1,0 +1,60 @@
+.header {
+  padding: 24px var(--main-padding-x);
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    &-item {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--secondary-font-color);
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      &--active {
+        color: var(--main-color);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
