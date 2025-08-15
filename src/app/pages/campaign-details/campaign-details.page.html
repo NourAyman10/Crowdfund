@@ -1,1 +1,116 @@
-<p>campaign-details works!</p>
+<section class="campain-details">
+  <section class="hero">
+    <ul class="sub-heading">
+      <li [routerLink]="['/campaigns']">Campaigns</li>
+      <li>Campaign Details</li>
+    </ul>
+    <h1 class="heading">Make a Positive Impact</h1>
+  </section>
+
+  <section class="content">
+    <div class="content__image image">
+      @if (isLoading() && !removeLoader()) {
+      <div class="loading-spinner">
+        <mat-progress-spinner
+          mode="indeterminate"
+          diameter="40"
+          strokeWidth="5"
+          data-spinner
+        >
+        </mat-progress-spinner>
+      </div>
+      }
+      <img
+        appImageFallback
+        [imageSrc]="image()"
+        [src]="image()"
+        (load)="hideSpinner()"
+        (error)="hideSpinner()"
+        [alt]="name()"
+        [class.hidden]="isLoading() && !removeLoader()"
+      />
+    </div>
+    <div class="content-data">
+      <p>We’ve helped hundreds of users raise funds</p>
+      <h2>Contribute to Make a Real Difference</h2>
+      <app-progress-bar
+        [percentage]="40"
+        class="progress-bar"
+      />
+      <ul class="content-grid">
+        <li>
+            <h1>$5,000</h1>
+            <p>Campaign Target</p>
+        </li>
+        <li>
+            <h1>44%</h1>
+            <p>Campaign Target Achieved</p>
+        </li>
+        <li>
+            <h1>$2,200</h1>
+            <p>Raised Funds</p>
+        </li>
+        <li>
+            <h1>3+</h1>
+            <p>Donors</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="donors">
+    <h3>Champions of the Cause</h3>
+    <ul class="donors-grid">
+        <li>
+            <h4>Fatima</h4>
+            <div class="amount">
+                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
+                <p>1,200</p>
+            </div>
+        </li>
+        <li>
+            <h4>Youssef</h4>
+            <div class="amount">
+                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
+                <p>150</p>
+            </div>
+        </li>
+        <li>
+            <h4>Lina</h4>
+            <div class="amount">
+                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
+                <p>188</p>
+            </div>
+        </li>
+    </ul>
+  </section>
+
+  <form class="donate">
+    <h3>Donate Now</h3>
+    <div>
+        <input customInput type="text" placeholder="$10.00">
+        <input customInput type="text" placeholder="Enter your name">
+        <button customButton type="submit">Donate</button>
+    </div>
+  </form>
+
+  <section class="social-proof">
+    <p>Our partners help drive the success of your campaigns</p>
+    <ul class="logos">
+        <li>
+            <img src="assets/images/partners/layers.svg" alt="" class="logo">
+        </li>
+        <li>
+            <img src="assets/images/partners/sisyphus.svg" alt="" class="logo">
+        </li>
+        <li>
+            <img src="assets/images/partners/circooles.svg" alt="" class="logo">
+        </li>
+        <li>
+            <img src="assets/images/partners/catalog.svg" alt="" class="logo">
+        </li>
+        <li>
+            <img src="assets/images/partners/quotient.svg" alt="" class="logo">
+        </li>
+    </ul>
+  </section>
+</section>

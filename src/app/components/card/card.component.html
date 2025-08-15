@@ -1,6 +1,6 @@
 @if (skeleton()) {
 <div class="card card--skeleton">
-  <div skeleton class="card__image" height="200" borderRadius="0"></div>
+  <div skeleton class="card__image image" height="200" borderRadius="0"></div>
   <div skeleton class="card__progress-bar" height="10px"></div>
   <div
     skeleton
@@ -14,9 +14,9 @@
 </div>
 } @else {
 <div class="card">
-  <div class="card__image">
+  <div class="card__image image">
     @if (isLoading() && !removeLoader()) {
-    <div class="card__loading-spinner">
+    <div class="loading-spinner">
       <mat-progress-spinner
         mode="indeterminate"
         diameter="40"
@@ -32,9 +32,8 @@
       [src]="image()"
       (load)="hideSpinner()"
       (error)="hideSpinner()"
-      loading="eager"
       [alt]="name()"
-      [class.card__image--hidden]="isLoading() && !removeLoader()"
+      [class.hidden]="isLoading() && !removeLoader()"
     />
   </div>
   <app-progress-bar [percentage]="percentage()" class="card__progress-bar" />
