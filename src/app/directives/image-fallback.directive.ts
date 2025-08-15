@@ -19,10 +19,22 @@ export class ImageFallbackDirective implements OnInit {
   imageSrc = input<string>('');
 
   ngOnInit() {
-    // If no image source is provided, use fallback immediately
-    if (!this.imageSrc() || this.imageSrc().trim() === '') {
-      const imageElement: HTMLImageElement = this.elementRef.nativeElement;
+    const src = this.imageSrc()?.trim() || '';
+    const imageElement: HTMLImageElement = this.elementRef.nativeElement;
+
+    if (!this.isValidUrl(src)) {
       imageElement.src = this.imageFallback();
+    } else {
+      imageElement.src = src;
+    }
+  }
+
+  private isValidUrl(value: string): boolean {
+    try {
+      new URL(value);
+      return true;
+    } catch {
+      return false;
     }
   }
 
@@ -32,8 +44,10 @@ export class ImageFallbackDirective implements OnInit {
     const fallbackSrc = this.imageFallback();
 
     // Only set fallback if we haven't already tried it
-    if (imageElement.src !== fallbackSrc && !imageElement.src.includes('image-placeholder.png')) {
-      console.log('Image failed to load, using fallback:', fallbackSrc);
+    if (
+      imageElement.src !== fallbackSrc &&
+      !imageElement.src.includes('image-placeholder.png')
+    ) {
       imageElement.src = fallbackSrc;
     }
   }
