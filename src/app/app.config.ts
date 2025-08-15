@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([errorInterceptor])
     ),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideAnimationsAsync(),
+    provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 };

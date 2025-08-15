@@ -1,0 +1,69 @@
+.card {
+  display: grid;
+  gap: 5px;
+  cursor: pointer;
+
+  &__image {
+    height: 200px;
+    position: relative;
+    background-color: var(--placeholder-color);
+    overflow: hidden;
+
+    &--hidden {
+      opacity: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+  }
+
+  &__loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    [data-spinner] {
+      --mdc-circular-progress-active-indicator-color: var(--main-color);
+    }
+  }
+
+  &__progress-bar {
+    margin: 13px 0 7px 0;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__supporting-text {
+    color: var(--secondary-font-color);
+  }
+
+  &:hover &__image img {
+    transition: all 0.5s ease;
+    transform: scale(1.05);
+  }
+  &:hover &__name {
+    transition: all 0.5s ease;
+    color: var(--main-color);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

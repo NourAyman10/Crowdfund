@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
-import { NewsletterCTASectionComponent } from '../../components/shared/newsletter-cta-section/newsletter-cta-section.component';
+import { NewsletterCTASectionComponent } from '../../components/newsletter-cta-section/newsletter-cta-section.component';
 
 @Component({
   selector: 'app-main-layout',

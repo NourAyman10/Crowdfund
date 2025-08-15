@@ -1,1 +1,23 @@
-<p>campaigns works!</p>
+<section class="home">
+  <section class="content">
+    <p class="sub-heading">Donations Campaigns</p>
+    <h1 class="heading">Make a Positive Impact</h1>
+    <p class="supporting-text">
+      Every penny counts,
+      <br />
+      Donate now and make the world a better place.
+    </p>
+  </section>
+  <section class="campaigns">
+    @if(isLoading()) { @for (item of [].constructor(4); track $index) {
+    <app-card [skeleton]="true" />
+    }} @else { @for (campaign of campaigns(); track campaign.id) {
+    <app-card
+      [image]="campaign.imageUrl"
+      [name]="campaign.name"
+      [goal]="campaign.goal"
+      [currentAmount]="campaign.currentAmount"
+    />
+    } }
+  </section>
+</section>
