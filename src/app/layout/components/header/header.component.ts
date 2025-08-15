@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../../../components/shared/button/button.component';
+import { LogoComponent } from '../../../components/shared/logo/logo.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ButtonComponent],
+  imports: [LogoComponent, RouterLink, RouterLinkActive, ButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

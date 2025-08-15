@@ -2,15 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: var(--element-padding);
+  border-radius: var(--element-border-radius);
+  font-size: var(--element-font-size);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 0;
   position: relative;
-  font-size: 1rem;
 
   &[disabled] {
     cursor: not-allowed;
