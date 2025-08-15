@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ButtonComponent } from '../../../components/shared/button/button.component';
-import { LogoComponent } from '../../../components/shared/logo/logo.component';
+import { ButtonComponent } from '../../../components/button/button.component';
+import { LogoComponent } from '../../../components/logo/logo.component';
 
 @Component({
   selector: 'app-header',

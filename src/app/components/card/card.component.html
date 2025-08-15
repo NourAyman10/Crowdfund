@@ -1,0 +1,25 @@
+@if(skeleton()) {
+<div class="card">
+  <div skeleton class="image" height="296px" borderRadius="0"></div>
+  <div skeleton class="progress-bar" height="10px"></div>
+  <div
+    skeleton
+    class="name"
+    height="22px"
+    width="80%"
+    borderRadius="30px"
+  ></div>
+  <div skeleton class="supporting-text" height="15px" width="40%"></div>
+  <div skeleton class="supporting-text" height="15px" width="40%"></div>
+</div>
+} @else {
+<div class="card">
+  <div class="image">
+    <img src="assets/images/image-placeholder.png" alt="" />
+  </div>
+  <app-progress-bar [percentage]="40" class="progress-bar" />
+  <h3 class="name">{{name()}}</h3>
+  <p class="supporting-text">Target: {{target()}}$</p>
+  <p class="supporting-text">Raised: {{raised()}}$</p>
+</div>
+}

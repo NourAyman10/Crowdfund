@@ -1,1 +1,18 @@
-<p>campaigns works!</p>
+<section class="home">
+  <section class="content">
+    <p class="sub-heading">Donations Campaigns</p>
+    <h1 class="heading">Make a Positive Impact</h1>
+    <p class="supporting-text">
+      Every penny counts,
+      <br />
+      Donate now and make the world a better place.
+    </p>
+  </section>
+  <section class="campaigns">
+    @for (item of [].constructor(4); track $index) {
+    <app-card [skeleton]="true" />
+    } @for (item of [].constructor(4); track $index) {
+    <app-card />
+    }
+  </section>
+</section>

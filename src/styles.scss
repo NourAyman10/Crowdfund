@@ -1,7 +1,7 @@
 // import font
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
 }
 
 // nessessary vars
@@ -13,7 +13,7 @@ body {
   --gray500-color: #717680;
   --light-gray50-color: #fafafa;
   --light-gray6-color: #f2f2f7;
-  --light-gray200-color: #E9EAEB;
+  --light-gray200-color: #e9eaeb;
   --light-gray-border-color: #d5d7da;
   --placeholder-color: #e3e3e3;
   --progress-green-color: #80ef76;
@@ -29,7 +29,11 @@ body {
 
 body,
 body * {
+  color: var(--primary-font-color);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -11,6 +11,10 @@
   border: 0;
   position: relative;
 
+  span {
+    color: inherit;
+  }
+
   &[disabled] {
     cursor: not-allowed;
     opacity: 0.5;
