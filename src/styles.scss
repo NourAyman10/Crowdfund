@@ -1,26 +1,32 @@
-// import font 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+// import font
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 body {
-    font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 // nessessary vars
 :root {
-    --main-color: #7F56D9;
-    --main-color-hover: #744dc8;
-    --primary-font-color: #181D27;
-    --secondary-font-color: #535862;
-    --placeholder-color: #E3E3E3;
-    --light-gray50-color: #FAFAFA;
-    --light-gray6-color: #F2F2F7;
-    --progress-green-color: #80EF76;
-    --success-color: #027A48;
-    --bg-success-color: rgba(2, 122, 72, 0.5);
-    --error-color: #d03d33;
-    --bg-error-color: rgba(208, 61, 51, 0.5);
-    --main-padding-x: 112px;
+  --main-color: #7f56d9;
+  --main-color-hover: #744dc8;
+  --primary-font-color: #181d27;
+  --secondary-font-color: #535862;
+  --placeholder-color: #e3e3e3;
+  --light-gray50-color: #fafafa;
+  --light-gray6-color: #f2f2f7;
+  --light-gray-border-color: #d5d7da;
+  --progress-green-color: #80ef76;
+  --success-color: #027a48;
+  --bg-success-color: rgba(2, 122, 72, 0.5);
+  --error-color: #d03d33;
+  --bg-error-color: rgba(208, 61, 51, 0.5);
+  --main-padding-x: 112px;
+  --element-padding: 10px 18px;
+  --element-border-radius: 8px;
+  --element-font-size: 16px;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body , body * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

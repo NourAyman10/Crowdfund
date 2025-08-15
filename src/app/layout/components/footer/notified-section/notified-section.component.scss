@@ -1,0 +1,43 @@
+.subscribe-section {
+  background-color: var(--light-gray50-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 96px var(--main-padding-x);
+
+  &__title {
+    font-weight: 600;
+    font-size: 36px;
+  }
+
+  &__subtitle {
+    margin: 20px 0 40px;
+    color: var(--secondary-font-color);
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__input-group {
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  &__note {
+    font-size: 14px;
+    color: var(--secondary-font-color);
+  }
+
+  &__link {
+    color: inherit;
+  }
+}
