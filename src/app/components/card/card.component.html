@@ -1,25 +1,45 @@
-@if(skeleton()) {
-<div class="card">
-  <div skeleton class="image" height="296px" borderRadius="0"></div>
-  <div skeleton class="progress-bar" height="10px"></div>
+@if (skeleton()) {
+<div class="card card--skeleton">
+  <div skeleton class="card__image" height="296px" borderRadius="0"></div>
+  <div skeleton class="card__progress-bar" height="10px"></div>
   <div
     skeleton
-    class="name"
-    height="22px"
+    class="card__name"
+    height="24px"
     width="80%"
     borderRadius="30px"
   ></div>
-  <div skeleton class="supporting-text" height="15px" width="40%"></div>
-  <div skeleton class="supporting-text" height="15px" width="40%"></div>
+  <div skeleton class="card__supporting-text" height="15px" width="40%"></div>
+  <div skeleton class="card__supporting-text" height="15px" width="40%"></div>
 </div>
 } @else {
 <div class="card">
-  <div class="image">
-    <img src="assets/images/image-placeholder.png" alt="" />
+  <div class="card__image">
+    @if (isLoading() && !removeLoader()) {
+    <div class="card__loading-spinner">
+      <mat-progress-spinner
+        mode="indeterminate"
+        diameter="40"
+        strokeWidth="5"
+        data-spinner
+      >
+      </mat-progress-spinner>
+    </div>
+    }
+    <img
+      appImageFallback
+      [imageSrc]="image()"
+      [src]="image()"
+      (load)="hideSpinner()"
+      (error)="hideSpinner()"
+      loading="eager"
+      [alt]="name()"
+      [class.card__image--hidden]="isLoading() && !removeLoader()"
+    />
   </div>
-  <app-progress-bar [percentage]="40" class="progress-bar" />
-  <h3 class="name">{{name()}}</h3>
-  <p class="supporting-text">Target: {{target()}}$</p>
-  <p class="supporting-text">Raised: {{raised()}}$</p>
+  <app-progress-bar [percentage]="percentage()" class="card__progress-bar" />
+  <h3 class="card__name">{{ name() }}</h3>
+  <p class="card__supporting-text">Target: ${{ goal() }}</p>
+  <p class="card__supporting-text">Raised: ${{ currentAmount() }}</p>
 </div>
 }

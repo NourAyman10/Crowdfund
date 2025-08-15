@@ -9,10 +9,15 @@
     </p>
   </section>
   <section class="campaigns">
-    @for (item of [].constructor(4); track $index) {
+    @if(isLoading()) { @for (item of [].constructor(4); track $index) {
     <app-card [skeleton]="true" />
-    } @for (item of [].constructor(4); track $index) {
-    <app-card />
-    }
+    }} @else { @for (campaign of campaigns(); track campaign.id) {
+    <app-card
+      [image]="campaign.imageUrl"
+      [name]="campaign.name"
+      [goal]="campaign.goal"
+      [currentAmount]="campaign.currentAmount"
+    />
+    } }
   </section>
 </section>
