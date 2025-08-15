@@ -1,4 +1,5 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CardComponent } from '../../components/card/card.component';
 import { CampaignsService } from '../../services/campaigns/campaigns.service';
 import { Campaign } from '../../models/campaigns.model';
@@ -7,7 +8,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-campaigns',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, RouterLink],
   templateUrl: './campaigns.page.html',
   styleUrl: './campaigns.page.scss',
 })
