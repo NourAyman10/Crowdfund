@@ -30,7 +30,7 @@ export const appConfig: ApplicationConfig = {
       };
     }),
     provideToastr({
-      timeOut: 9000,
+      timeOut: 4000,
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     })
