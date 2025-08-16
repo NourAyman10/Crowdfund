@@ -4,10 +4,17 @@
       <li [routerLink]="['/campaigns']">Campaigns</li>
       <li>Campaign Details</li>
     </ul>
+    @if(isContentLoading()) {
+    <div skeleton class="heading" height="64px" borderRadius="50px"></div>
+    } @else {
     <h1 class="heading">{{ campaign()?.name }}</h1>
+    }
   </section>
 
   <section class="content">
+    @if(isContentLoading()) {
+    <div skeleton height="100%" borderRadius="0"></div>
+    } @else {
     <div class="content__image image">
       @if (isLoading() && !removeLoader()) {
       <div class="loading-spinner">
@@ -30,13 +37,18 @@
         [class.hidden]="isLoading() && !removeLoader()"
       />
     </div>
+    }
     <div class="content-data">
       <p>We’ve helped hundreds of users raise funds</p>
       <h2>Contribute to Make a Real Difference</h2>
       <app-progress-bar [percentage]="percentage()" class="progress-bar" />
       <ul class="content-grid">
+        @if(isContentLoading()) { @for (item of [].constructor(4); track $index)
+        {
+        <div skeleton height="107px"></div>
+        } }@else {
         <li>
-          <h1>${{ campaign()?.goal| number:'1.0-0' }}</h1>
+          <h1>${{ campaign()?.goal| number:'1.0-2' }}</h1>
           <p>Campaign Target</p>
         </li>
         <li>
@@ -44,13 +56,14 @@
           <p>Campaign Target Achieved</p>
         </li>
         <li>
-          <h1>${{ campaign()?.currentAmount | number:'1.0-0' }}</h1>
+          <h1>${{ campaign()?.currentAmount | number:'1.0-2' }}</h1>
           <p>Raised Funds</p>
         </li>
         <li>
           <h1>{{ campaign()?.donors?.length }}+</h1>
           <p>Donors</p>
         </li>
+        }
       </ul>
     </div>
   </section>
@@ -59,7 +72,9 @@
   <section class="donors">
     <h3>Champions of the Cause</h3>
     <ul class="donors-grid">
-      @for (donor of campaign()?.donors; track donor.name) {
+      @if(isContentLoading()) { @for (item of [].constructor(4); track $index) {
+      <div skeleton height="118px"></div>
+      } }@else { @for (donor of campaign()?.donors; track donor.name) {
       <li>
         <h4>{{ donor.name }}</h4>
         <div class="amount">
@@ -71,7 +86,7 @@
           <p>{{ donor.amount | number:'1.0-0' }}</p>
         </div>
       </li>
-      }
+      }}
     </ul>
   </section>
   }
@@ -87,12 +102,7 @@
         step="0.01"
         required
       />
-      <input
-        customInput
-        type="text"
-        placeholder="Enter your name"
-        required
-      />
+      <input customInput type="text" placeholder="Enter your name" required />
       <button customButton type="submit">Donate</button>
     </div>
   </form>
@@ -101,19 +111,39 @@
     <p>Our partners help drive the success of your campaigns</p>
     <ul class="logos">
       <li>
-        <img src="assets/images/partners/layers.svg" alt="" class="layers-logo" />
+        <img
+          src="assets/images/partners/layers.svg"
+          alt=""
+          class="layers-logo"
+        />
       </li>
       <li>
-        <img src="assets/images/partners/sisyphus.svg" alt="" class="sisyphus-logo" />
+        <img
+          src="assets/images/partners/sisyphus.svg"
+          alt=""
+          class="sisyphus-logo"
+        />
       </li>
       <li>
-        <img src="assets/images/partners/circooles.svg" alt="" class="circooles-logo" />
+        <img
+          src="assets/images/partners/circooles.svg"
+          alt=""
+          class="circooles-logo"
+        />
       </li>
       <li>
-        <img src="assets/images/partners/catalog.svg" alt="" class="catalog-logo" />
+        <img
+          src="assets/images/partners/catalog.svg"
+          alt=""
+          class="catalog-logo"
+        />
       </li>
       <li>
-        <img src="assets/images/partners/quotient.svg" alt="" class="quotient-logo" />
+        <img
+          src="assets/images/partners/quotient.svg"
+          alt=""
+          class="quotient-logo"
+        />
       </li>
     </ul>
   </section>

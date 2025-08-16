@@ -6,23 +6,22 @@ import { ProgressBarComponent } from '../../components/progress-bar/progress-bar
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CampainDetailsService } from '../../services/campain-details/campain-details.service';
-import { Campaign } from '../../models/campaigns.model';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { RealtimeService } from '../../services/realtime/realtime.service';
+import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
 
 @Component({
   selector: 'app-campaign-details',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    DecimalPipe,
     RouterLink,
     ImageFallbackDirective,
     MatProgressSpinnerModule,
     ProgressBarComponent,
     InputComponent,
     ButtonComponent,
+    SkeletonComponent,
   ],
   templateUrl: './campaign-details.page.html',
   styleUrl: './campaign-details.page.scss',
@@ -45,8 +44,17 @@ export class CampaignDetailsPage {
   isLoading = signal(true);
   removeLoader = signal(false);
 
+  isContentLoading = signal(true);
+
   ngOnInit() {
-    this.campainDetailsService.load(this.id()).subscribe();
+    this.campainDetailsService.load(this.id()).subscribe({
+      next: () => {
+        this.isContentLoading.set(false);
+      },
+      error: () => {
+        this.isContentLoading.set(false);
+      },
+    });
 
     this.realtimeService.messages$().subscribe((message) => {
       if (

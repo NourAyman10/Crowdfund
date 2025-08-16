@@ -38,7 +38,7 @@
   </div>
   <app-progress-bar [percentage]="percentage()" class="card__progress-bar" />
   <h3 class="card__name">{{ name() }}</h3>
-  <p class="card__supporting-text">Target: ${{ goal() }}</p>
-  <p class="card__supporting-text">Raised: ${{ currentAmount() }}</p>
+  <p class="card__supporting-text">Target: ${{ goal() | number:'1.0-2'}}</p>
+  <p class="card__supporting-text">Raised: ${{ currentAmount() | number:'1.0-2' }}</p>
 </div>
 }
