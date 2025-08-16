@@ -3,11 +3,13 @@ import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { ImageFallbackDirective } from '../../directives/image-fallback.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [
+    DecimalPipe,
     SkeletonComponent,
     ProgressBarComponent,
     ImageFallbackDirective,
