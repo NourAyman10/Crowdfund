@@ -4,7 +4,7 @@
       <li [routerLink]="['/campaigns']">Campaigns</li>
       <li>Campaign Details</li>
     </ul>
-    <h1 class="heading">Make a Positive Impact</h1>
+    <h1 class="heading">{{ name() }}</h1>
   </section>
 
   <section class="content">
@@ -34,62 +34,86 @@
       <p>We’ve helped hundreds of users raise funds</p>
       <h2>Contribute to Make a Real Difference</h2>
       <app-progress-bar
-        [percentage]="40"
+        [percentage]="percentage()"
         class="progress-bar"
       />
       <ul class="content-grid">
         <li>
-            <h1>$5,000</h1>
+            <h1>${{ goal() | number:'1.0-0' }}</h1>
             <p>Campaign Target</p>
         </li>
         <li>
-            <h1>44%</h1>
+            <h1>{{ percentage() }}%</h1>
             <p>Campaign Target Achieved</p>
         </li>
         <li>
-            <h1>$2,200</h1>
+            <h1>${{ currentAmount() | number:'1.0-0' }}</h1>
             <p>Raised Funds</p>
         </li>
         <li>
-            <h1>3+</h1>
+            <h1>{{ donors().length }}+</h1>
             <p>Donors</p>
         </li>
       </ul>
     </div>
   </section>
-  <section class="donors">
-    <h3>Champions of the Cause</h3>
-    <ul class="donors-grid">
-        <li>
-            <h4>Fatima</h4>
-            <div class="amount">
-                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
-                <p>1,200</p>
-            </div>
-        </li>
-        <li>
-            <h4>Youssef</h4>
-            <div class="amount">
-                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
-                <p>150</p>
-            </div>
-        </li>
-        <li>
-            <h4>Lina</h4>
-            <div class="amount">
-                <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
-                <p>188</p>
-            </div>
-        </li>
-    </ul>
-  </section>
 
-  <form class="donate">
+  @if (donors().length > 0) {
+    <section class="donors">
+      <h3>Champions of the Cause</h3>
+      <ul class="donors-grid">
+        @for (donor of donors(); track donor.name) {
+          <li>
+              <h4>{{ donor.name }}</h4>
+              <div class="amount">
+                  <img src="assets/images/icons/dollar.svg" alt="dollar-icon" class="icon">
+                  <p>{{ donor.amount | number:'1.0-0' }}</p>
+              </div>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  <form class="donate" (ngSubmit)="onSubmit()" #donationForm="ngForm">
     <h3>Donate Now</h3>
     <div>
-        <input customInput type="text" placeholder="$10.00">
-        <input customInput type="text" placeholder="Enter your name">
-        <button customButton type="submit">Donate</button>
+        <input 
+          customInput 
+          type="number" 
+          placeholder="$10.00"
+          [ngModel]="donationAmount()"
+          (ngModelChange)="donationAmount.set($event)"
+          name="amount"
+          min="1"
+          step="0.01"
+          required
+        >
+        <input 
+          customInput 
+          type="text" 
+          placeholder="Enter your name"
+          [ngModel]="donorName()"
+          (ngModelChange)="donorName.set($event)"
+          name="donorName"
+          required
+        >
+        <button 
+          customButton 
+          type="submit"
+          [disabled]="isSubmitting() || !donationForm.valid"
+        >
+          @if (isSubmitting()) {
+            <mat-progress-spinner
+              mode="indeterminate"
+              diameter="20"
+              strokeWidth="3"
+            >
+            </mat-progress-spinner>
+          } @else {
+            Donate
+          }
+        </button>
     </div>
   </form>
 

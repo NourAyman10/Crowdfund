@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environment/environment';
 import { Campaign } from '../../models/campaigns.model';
 
@@ -9,7 +9,7 @@ import { Campaign } from '../../models/campaigns.model';
 })
 export class CampaignsService {
   private httpClient = inject(HttpClient);
-  private url = `${environment.RESTfulBaseURL}/campaigns`;
+  private url = `${environment.baseURL}/${environment.RESTfulURL}/campaigns`;
 
   public getCampaigns(): Observable<Campaign[]> {
     return this.httpClient.get<Campaign[]>(this.url);
