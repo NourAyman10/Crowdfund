@@ -5,7 +5,7 @@
   &__links {
     padding: 64px 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   }
 
   &__column {
