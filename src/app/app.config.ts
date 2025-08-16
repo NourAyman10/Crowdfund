@@ -4,11 +4,12 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './interceptor/error.interceptor';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { environment } from '../environment/environment';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,9 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([errorInterceptor])
     ),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withComponentInputBinding()), provideAnimationsAsync(), provideAnimationsAsync(), provideHttpClient(), provideApollo(() => {
+    provideRouter(routes, withComponentInputBinding()),
+    provideAnimations(),
+    provideApollo(() => {
       const httpLink = inject(HttpLink);
 
       return {
@@ -26,5 +29,10 @@ export const appConfig: ApplicationConfig = {
         cache: new InMemoryCache(),
       };
     }),
+    provideToastr({
+      timeOut: 9000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    })
   ],
 };

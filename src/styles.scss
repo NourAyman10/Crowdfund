@@ -19,8 +19,8 @@ body {
   --progress-green-color: #80ef76;
   --success-color: #027a48;
   --bg-success-color: #ecfdf3;
-  --error-color: #d03d33;
-  --bg-error-color: rgba(208, 61, 51, 0.5);
+  --error-color: #e42518;
+  --bg-error-color: rgb(255, 235, 233);
   --main-padding-x: 112px;
   --element-padding: 10px 18px;
   --element-border-radius: 8px;
@@ -35,14 +35,30 @@ body * {
   margin: 0;
 }
 
-html,
-body {
-  height: 100%;
+// style toast
+.toast-success,
+.toast-error {
+  top: 20px;
+  border-radius: 10px !important;
+  padding: 10px 15px !important;
+  border-width: 1px;
+  border-style: solid;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+.toast-success {
+  border-color: var(--success-color);
+  background: var(--bg-success-color);
 }
+.toast-success > *:first-child {
+  color: var(--success-color);
+}
+.toast-error {
+  border-color: var(--error-color);
+  background: var(--bg-error-color);
+}
+.toast-error > *:first-child {
+  color: var(--error-color);
+}
+
 
 .image {
   position: relative;
