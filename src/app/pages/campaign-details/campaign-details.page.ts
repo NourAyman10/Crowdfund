@@ -49,13 +49,16 @@ export class CampaignDetailsPage {
     this.campainDetailsService.load(this.id()).subscribe();
 
     this.realtimeService.messages$().subscribe((message) => {
-      if (message.type === 'donation' && this.campaign()?.id === message.campaignId) {
+      if (
+        message.type === 'donation' &&
+        this.campaign()?.id == message.campaignId
+      ) {
         const c = this.campaign()!;
         this.campaign.set({
           ...c,
           currentAmount: c.currentAmount + message.amount,
           donors: [
-            { name: 'Live Donor', amount: message.amount },
+            { name: message.donor, amount: message.amount },
             ...(c.donors ?? []),
           ],
         });
