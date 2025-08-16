@@ -56,12 +56,10 @@
     &__hamburger {
       display: block;
     }
-    &__nav.header__nav--open {
-      transform: translateX(0);
-    }
+
     &__nav {
       background: linear-gradient(to right, #d7c9f3, white);
-      box-shadow: 0px 0px 20px #a0a0a0;
+      box-shadow: 0px 0px 20px #00000086;
       width: 40vw !important;
       position: fixed;
       flex-direction: column;
@@ -72,6 +70,10 @@
       transform: translateX(110%);
       z-index: 111;
       transition: all 0.5s ease;
+
+      &--open {
+        transform: translateX(0);
+      }
 
       ul {
         flex-direction: column;
