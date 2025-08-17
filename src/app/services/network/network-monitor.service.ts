@@ -11,6 +11,7 @@ export class NetworkMonitorService {
   private toaster = inject(ToastrService);
   private isInitialized = false;
   private wasOffline = false; // Track if we were offline at any point
+  private offlineToastId: number | null = null; // Store the offline toast ID
 
   constructor() {
     // Delay initialization to prevent false positives on page refresh
@@ -51,15 +52,23 @@ export class NetworkMonitorService {
   }
 
   private showOfflineToast(): void {
-    this.toaster.error("There is no internet", "Network Error", {
+    // Store the toast ID so we can close it later
+    const toast = this.toaster.error("There is no internet", "Network Error", {
       timeOut: 0,
       extendedTimeOut: 0,
       closeButton: true,
       progressBar: false
     });
+    this.offlineToastId = toast.toastId;
   }
 
   private showOnlineToast(): void {
+    // Close the offline toast if it exists
+    if (this.offlineToastId !== null) {
+      this.toaster.clear(this.offlineToastId);
+      this.offlineToastId = null;
+    }
+
     this.toaster.success("Internet connection restored", "Network Restored", {
       timeOut: 4000,
       progressBar: true
