@@ -15,6 +15,10 @@ export class CampainDetailsService {
   gqlErrors = signal<string[]>([]);
 
   load(id: string) {
+    // Clear previous campaign data before loading new one
+    this.campaign.set(null);
+    this.gqlErrors.set([]);
+    
     return this.apollo
       .watchQuery<{ campaign: Campaign }>({
         query: GET_CAMPAIGN_DETAILS,

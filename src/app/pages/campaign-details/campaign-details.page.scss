@@ -1,3 +1,38 @@
+.not-exist {
+  margin-top: 30px;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  .search-icon {
+    height: 90px;
+    width: 15px;
+    background-color: var(--gray500-color);
+    border-radius: 20px;
+    position: relative;
+    transform: rotate(50deg);
+    &::after {
+      content: "○";
+      color: var(--gray500-color);
+      background-color: white;
+      font-weight: 500;
+      font-size: 150px;
+      line-height: 85px;
+      position: absolute;
+      top: 0;
+      transform: translate(calc(-50% + 7px), -90%);
+    }
+  }
+  h1 {
+    font-size: 40px;
+    color: var(--gray500-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+}
+
 .campain-details {
   .hero {
     padding: 54px var(--main-padding-x);
