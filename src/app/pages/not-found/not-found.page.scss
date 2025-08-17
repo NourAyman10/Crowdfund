@@ -1,0 +1,29 @@
+.error-page {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray500-color);
+
+  .excl {
+    font-size: 50px;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid var(--gray500-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: inherit;
+  }
+  h1 {
+    font-size: 40px;
+    color: inherit;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+}

@@ -1,3 +1,10 @@
+@if(!isContentLoading() && errors().length == 0 && !campaign()) {
+  <section class="not-exist">
+    <div class="search-icon"></div>
+    <h1>Campaign Not Exist</h1>
+    <button customButton [routerLink]="['/campaigns']">Go Home</button>
+  </section>
+}@else {
 <section class="campain-details">
   <section class="hero">
     <ul class="sub-heading">
@@ -7,13 +14,19 @@
     @if(isContentLoading()) {
     <div skeleton class="heading" height="64px" borderRadius="50px"></div>
     } @else {
-    <h1 class="heading">{{ campaign()?.name }}</h1>
+    <h1 class="heading">{{ campaign()?.name || 'No Name' }}</h1>
     }
   </section>
 
   <section class="content">
     @if(isContentLoading()) {
-    <div skeleton height="100%" borderRadius="0"></div>
+    <div
+      skeleton
+      height="100%"
+      [style.min-hight]="'200px'"
+      [style.max-hight]="'600px'"
+      borderRadius="0"
+    ></div>
     } @else {
     <div class="content__image image">
       @if (isLoading() && !removeLoader()) {
@@ -148,3 +161,4 @@
     </ul>
   </section>
 </section>
+}

@@ -5,7 +5,8 @@
   &__links {
     padding: 64px 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    row-gap: 37px;
   }
 
   &__column {
@@ -50,13 +51,19 @@
   &__bottom {
     border-top: 1px solid var(--light-gray200-color);
     padding: 33px 0 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   &__copy {
     font-size: 16px;
     color: var(--gray500-color);
+  }
+}
+
+@media (max-width: 695px) {
+  .footer__bottom {
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 0 18px;
   }
 }

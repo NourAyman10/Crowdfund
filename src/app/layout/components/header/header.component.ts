@@ -8,8 +8,12 @@ import { LogoComponent } from '../../../components/logo/logo.component';
   standalone: true,
   imports: [LogoComponent, RouterLink, RouterLinkActive, ButtonComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  isMenuOpen = false;
 
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

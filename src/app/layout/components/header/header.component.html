@@ -1,21 +1,39 @@
 <header class="header">
-  
   <app-logo />
 
-  <div class="header__nav">
-    <ul>
-      <li class="header__nav-item" [routerLink]="['/campaigns']" routerLinkActive="header__nav-item--active">
-        <a>Campaigns</a>
+  <button class="header__hamburger" (click)="toggleMenu()">&#9776;</button>
+
+  <div class="header__nav align-center-space-between" [class.header__nav--open]="isMenuOpen">
+    <ul class="header__nav-list">
+      <div class="header__nav-menu-header">
+        <app-logo />
+        <span class="header__nav-menu-header__close" (click)="toggleMenu()">&times;</span>
+      </div>
+      <li
+        class="header__nav-item"
+        [routerLink]="['/campaigns']"
+        routerLinkActive="header__nav-item--active"
+        (click)="isMenuOpen ? toggleMenu() : null"
+      >
+        <a class="header__nav-item__link">Campaigns</a>
       </li>
 
       <li class="header__nav-item">
-        <a [routerLink]="['/about']">About</a>
+        <a 
+          class="header__nav-item__link" 
+          [routerLink]="['/about']" 
+          (click)="isMenuOpen ? toggleMenu() : null"
+        >
+          About
+        </a>
       </li>
     </ul>
 
     <div class="header__buttons">
-      <button customButton [primary]="false">Log in</button>
-      <button customButton>Sign up</button>
+      <button customButton [primary]="false" (click)="toggleMenu()">
+        Log in
+      </button>
+      <button customButton (click)="toggleMenu()">Sign up</button>
     </div>
   </div>
 </header>

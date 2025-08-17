@@ -9,6 +9,8 @@ import { CampainDetailsService } from '../../services/campain-details/campain-de
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { RealtimeService } from '../../services/realtime/realtime.service';
 import { SkeletonComponent } from '../../components/skeleton/skeleton.component';
+import { debounceTime } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-campaign-details',
@@ -31,6 +33,7 @@ export class CampaignDetailsPage {
 
   private campainDetailsService = inject(CampainDetailsService);
   private realtimeService = inject(RealtimeService);
+  private toaster = inject(ToastrService);
 
   campaign = this.campainDetailsService.campaign;
   errors = this.campainDetailsService.gqlErrors;
@@ -47,16 +50,22 @@ export class CampaignDetailsPage {
   isContentLoading = signal(true);
 
   ngOnInit() {
-    this.campainDetailsService.load(this.id()).subscribe({
-      next: () => {
-        this.isContentLoading.set(false);
-      },
-      error: () => {
-        this.isContentLoading.set(false);
-      },
-    });
+    this.campainDetailsService
+      .load(this.id())
+      .pipe(debounceTime(100)) // 100ms debounce
+      .subscribe({
+        next: () => {
+          this.isContentLoading.set(false);
+          if(this.errors().length > 0) {
+            this.toaster.error("Can't Load Campain, Try again", "Error")
+          }
+        },
+        error: () => {
+          this.isContentLoading.set(false);
+        },
+      });
 
-    this.realtimeService.messages$().subscribe((message) => {
+    this.realtimeService.messages$().pipe(debounceTime(100)).subscribe((message) => {
       if (
         message.type === 'donation' &&
         this.campaign()?.id == message.campaignId
@@ -77,5 +86,11 @@ export class CampaignDetailsPage {
   hideSpinner() {
     this.isLoading.set(false);
     setTimeout(() => this.removeLoader.set(true), 1000);
+  }
+
+  ngOnDestroy() {
+    this.isContentLoading.set(true);
+    this.campaign.set(null);
+    this.errors.set([]);
   }
 }

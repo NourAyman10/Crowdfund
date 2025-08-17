@@ -59,6 +59,11 @@ body * {
   color: var(--error-color);
 }
 
+.align-center-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .image {
   position: relative;
@@ -98,5 +103,11 @@ body * {
   }
   100% {
     opacity: 100%;
+  }
+}
+
+@media (max-width: 613px) {
+  :root {
+      --main-padding-x: 32px;
   }
 }
