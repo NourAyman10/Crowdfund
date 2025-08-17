@@ -105,3 +105,9 @@ body * {
     opacity: 100%;
   }
 }
+
+@media (max-width: 613px) {
+  :root {
+      --main-padding-x: 32px;
+  }
+}

@@ -13,7 +13,13 @@
 
   <section class="content">
     @if(isContentLoading()) {
-    <div skeleton height="100%" borderRadius="0"></div>
+    <div
+      skeleton
+      height="100%"
+      [style.min-hight]="'200px'"
+      [style.max-hight]="'600px'"
+      borderRadius="0"
+    ></div>
     } @else {
     <div class="content__image image">
       @if (isLoading() && !removeLoader()) {
@@ -109,7 +115,7 @@
 
   <section class="social-proof">
     <p>Our partners help drive the success of your campaigns</p>
-    <ul class="logos align-center-space-between">
+    <ul class="logos">
       <li>
         <img
           src="assets/images/partners/layers.svg"
