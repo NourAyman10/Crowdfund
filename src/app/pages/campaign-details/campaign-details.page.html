@@ -1,5 +1,5 @@
 @if(!isContentLoading() && errors().length == 0 && !campaign()) {
-  <section class="not-exist">
+  <section class="not-exist align-center-justify-center">
     <div class="search-icon"></div>
     <h1>Campaign Not Exist</h1>
     <button customButton [routerLink]="['/campaigns']">Go Home</button>
@@ -7,7 +7,7 @@
 }@else {
 <section class="campain-details">
   <section class="hero">
-    <ul class="sub-heading">
+    <ul class="sub-heading align-center-justify-center">
       <li [routerLink]="['/campaigns']">Campaigns</li>
       <li>Campaign Details</li>
     </ul>
