@@ -211,6 +211,15 @@ h3 {
   font-weight: 600;
 }
 
+@media (max-width: 840px) {
+  .donate {
+    div {
+      grid-template-columns: 1fr !important;
+      width: 100% !important;
+    }
+  }
+}
+
 @media (max-width: 787px) {
   .hero {
     padding-bottom: 40px;
@@ -231,9 +240,13 @@ h3 {
   .content-grid {
     grid-template-columns: 1fr !important;
   }
-  .donate {
-    div {
-      grid-template-columns: 1fr !important;
-    }
+}
+
+@media (max-width: 515px) {
+  .content {
+    grid-template-columns: 1fr !important;
+  }
+  .donors-grid {
+    grid-template-columns: 1fr !important;
   }
 }
