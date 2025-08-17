@@ -31,7 +31,12 @@
                 "input": "src/assets",
                 "output": "assets"
               },
-              "src/favicon.ico"
+              "src/favicon.ico",
+              {
+                "glob": "_redirects",
+                "input": "public",
+                "output": "."
+              }
             ],
             "styles": [
               "node_modules/ngx-toastr/toastr.css",
@@ -93,7 +98,12 @@
                 "input": "src/assets",
                 "output": "assets"
               },
-              "src/favicon.ico"
+              "src/favicon.ico",
+              {
+                "glob": "_redirects",
+                "input": "public",
+                "output": "."
+              }
             ],
             "styles": [
               "node_modules/ngx-toastr/toastr.css",

@@ -35,6 +35,12 @@ This creates the `dist/crowdfund/browser` folder with your production build.
 - Specifies build settings and redirects
 - Handles Angular routing (SPA fallback)
 - Sets security headers
+- **Base directory**: `.` (root of repository)
+
+### _redirects file
+- Backup method for Angular routing support
+- Automatically included in build output
+- Ensures SPA routing works correctly
 
 ### Build Output
 - **Publish directory**: `dist/crowdfund/browser`
