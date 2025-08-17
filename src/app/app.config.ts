@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection, inject } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  inject,
+} from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -13,9 +17,7 @@ import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(
-      withInterceptors([errorInterceptor])
-    ),
+    provideHttpClient(withInterceptors([errorInterceptor])),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),
     provideAnimations(),
@@ -33,6 +35,7 @@ export const appConfig: ApplicationConfig = {
       timeOut: 4000,
       positionClass: 'toast-top-center',
       preventDuplicates: true,
-    })
+      progressBar: true,
+    }),
   ],
 };
