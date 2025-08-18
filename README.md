@@ -265,18 +265,6 @@ The application is built with a mobile-first approach:
 - **Caching**: Service worker and HTTP caching
 - **CDN**: Global content delivery via Netlify
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 **Made with ❤️ using Angular 18**
 
 **Live Demo**: [https://crownfund1.netlify.app/campaigns](https://crownfund1.netlify.app/campaigns)
