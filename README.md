@@ -248,31 +248,6 @@ This project is configured for easy deployment on Netlify:
 - `public/_redirects` - Angular routing support
 - `DEPLOYMENT_CHECKLIST.md` - Step-by-step guide
 
-### Local Development vs Production
-
-| Environment | API Base URL | WebSocket URL | Build Mode |
-|-------------|--------------|---------------|------------|
-| **Development** | `http://localhost:3000` | `ws://localhost:3000` | Development |
-| **Production** | `https://api.yourdomain.com` | `wss://api.yourdomain.com` | Production |
-
-## 🔒 Environment Configuration
-
-Create environment files for different configurations:
-
-### **Environment Files**
-- `src/environment/environment.ts` - Development
-- `src/environment/environment.prod.ts` - Production
-
-### **Required Environment Variables**
-```typescript
-export const environment = {
-  production: false,
-  baseURL: 'http://localhost:3000',
-  RESTfulURL: 'api/v1',
-  webSocketBaseURL: 'ws://localhost:3000/ws'
-};
-```
-
 ## 📱 Responsive Design
 
 The application is built with a mobile-first approach:
